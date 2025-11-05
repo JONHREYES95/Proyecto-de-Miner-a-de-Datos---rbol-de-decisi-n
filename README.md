@@ -1,4 +1,5 @@
 Desafío Práctico 2: Datawarehouse y Minería de Datos
+
 Este repositorio contiene los 3 procesos de RapidMiner (.rmp) creados para resolver el Desafío Práctico 2.
 
 El núcleo del desafío fue un ejercicio de ingeniería de características (feature engineering). se nos proporcionaron archivos (estado_civil, primer_compra, whisky) que carecían de las columnas objetivo (Cliente Potencial y Forma de Pago).
