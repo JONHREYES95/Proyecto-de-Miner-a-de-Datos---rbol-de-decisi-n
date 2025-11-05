@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="12.0.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="12.0.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_excel" compatibility="12.0.001" expanded="true" height="68" name="Read Excel" width="90" x="45" y="34">
+        <parameter key="excel_file" value="C:\Users\hunks\Downloads\recursosdesafio2\estado_civil.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="America/El_Salvador"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="dinero.true.integer.attribute"/>
+          <parameter key="1" value="casa.true.integer.attribute"/>
+          <parameter key="2" value="estado.true.polynominal.attribute"/>
+          <parameter key="3" value="sexo.true.integer.attribute"/>
+          <parameter key="4" value="auto.true.integer.attribute"/>
+          <parameter key="5" value="edad.true.integer.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:generate_id" compatibility="12.0.001" expanded="true" height="82" name="Generate ID (2)" width="90" x="179" y="85">
+        <parameter key="create_nominal_ids" value="false"/>
+        <parameter key="offset" value="0"/>
+      </operator>
+      <operator activated="true" class="read_excel" compatibility="12.0.001" expanded="true" height="68" name="Read Excel (2)" width="90" x="45" y="238">
+        <parameter key="excel_file" value="C:\Users\hunks\Downloads\recursosdesafio2\primer_compra.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="America/El_Salvador"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="Primer_Compra.true.polynominal.attribute"/>
+          <parameter key="1" value="Estado Civil.true.integer.attribute"/>
+          <parameter key="2" value="Edad.true.integer.attribute"/>
+          <parameter key="3" value="Sueldo.true.integer.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:generate_id" compatibility="12.0.001" expanded="true" height="82" name="Generate ID" width="90" x="179" y="187">
+        <parameter key="create_nominal_ids" value="false"/>
+        <parameter key="offset" value="0"/>
+      </operator>
+      <operator activated="true" class="concurrency:join" compatibility="12.0.001" expanded="true" height="82" name="Join" width="90" x="313" y="136">
+        <parameter key="remove_double_attributes" value="true"/>
+        <parameter key="join_type" value="inner"/>
+        <parameter key="use_id_attribute_as_key" value="false"/>
+        <list key="key_attributes">
+          <parameter key="id" value="id"/>
+        </list>
+        <parameter key="keep_both_join_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:generate_columns" compatibility="12.0.001" expanded="true" height="82" name="Generate Attributes" width="90" x="447" y="34">
+        <list key="function_descriptions">
+          <parameter key="dummy_key" value="1"/>
+        </list>
+        <parameter key="keep_all_columns" value="true"/>
+        <parameter key="default_time_zone" value="America/El_Salvador"/>
+      </operator>
+      <operator activated="true" class="read_excel" compatibility="12.0.001" expanded="true" height="68" name="Read Excel (3)" width="90" x="45" y="340">
+        <parameter key="excel_file" value="C:\Users\hunks\Downloads\recursosdesafio2\whisky.xls"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="America/El_Salvador"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="id_Whisky.true.integer.attribute"/>
+          <parameter key="1" value="Precio.true.integer.attribute"/>
+          <parameter key="2" value="Malta.true.integer.attribute"/>
+          <parameter key="3" value="Categoria.true.polynominal.attribute"/>
+          <parameter key="4" value="Añejamiento.true.real.attribute"/>
+          <parameter key="5" value="Calidad.true.integer.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:generate_columns" compatibility="12.0.001" expanded="true" height="82" name="Generate Attributes (2)" width="90" x="447" y="340">
+        <list key="function_descriptions">
+          <parameter key="dummy_key" value="1"/>
+        </list>
+        <parameter key="keep_all_columns" value="true"/>
+        <parameter key="default_time_zone" value="America/El_Salvador"/>
+      </operator>
+      <operator activated="true" class="concurrency:join" compatibility="12.0.001" expanded="true" height="82" name="Join (2)" width="90" x="581" y="187">
+        <parameter key="remove_double_attributes" value="true"/>
+        <parameter key="join_type" value="inner"/>
+        <parameter key="use_id_attribute_as_key" value="false"/>
+        <list key="key_attributes">
+          <parameter key="dummy_key" value="dummy_key"/>
+        </list>
+        <parameter key="keep_both_join_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:generate_columns" compatibility="12.0.001" expanded="true" height="82" name="Generate Attributes (3)" width="90" x="715" y="34">
+        <list key="function_descriptions">
+          <parameter key="Forma_de_Pago" value="if(Precio &gt; 83.0 &amp;&amp; (Sueldo &lt;= 13965.0 || estado == &quot;casado&quot;), &quot;Cheque&quot;, &quot;Efectivo&quot;)"/>
+        </list>
+        <parameter key="keep_all_columns" value="true"/>
+        <parameter key="default_time_zone" value="America/El_Salvador"/>
+      </operator>
+      <operator activated="true" class="filter_examples" compatibility="12.0.001" expanded="true" height="103" name="Filter Examples" width="90" x="849" y="238">
+        <parameter key="parameter_expression" value=""/>
+        <parameter key="condition_class" value="custom_filters"/>
+        <parameter key="invert_filter" value="false"/>
+        <list key="filters_list">
+          <parameter key="filters_entry_key" value="Forma_de_Pago.is_in.Cheque;Efectivo"/>
+        </list>
+        <parameter key="filters_logic_and" value="true"/>
+        <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <connect from_port="input 1" to_op="Read Excel" to_port="file"/>
+      <connect from_port="input 2" to_op="Read Excel (2)" to_port="file"/>
+      <connect from_port="input 3" to_op="Read Excel (3)" to_port="file"/>
+      <connect from_op="Read Excel" from_port="output" to_op="Generate ID (2)" to_port="example set input"/>
+      <connect from_op="Generate ID (2)" from_port="example set output" to_op="Join" to_port="left"/>
+      <connect from_op="Read Excel (2)" from_port="output" to_op="Generate ID" to_port="example set input"/>
+      <connect from_op="Generate ID" from_port="example set output" to_op="Join" to_port="right"/>
+      <connect from_op="Join" from_port="join" to_op="Generate Attributes" to_port="table input"/>
+      <connect from_op="Generate Attributes" from_port="table output" to_op="Join (2)" to_port="left"/>
+      <connect from_op="Read Excel (3)" from_port="output" to_op="Generate Attributes (2)" to_port="table input"/>
+      <connect from_op="Generate Attributes (2)" from_port="table output" to_op="Join (2)" to_port="right"/>
+      <connect from_op="Join (2)" from_port="join" to_op="Generate Attributes (3)" to_port="table input"/>
+      <connect from_op="Generate Attributes (3)" from_port="table output" to_op="Filter Examples" to_port="example set input"/>
+      <connect from_op="Filter Examples" from_port="example set output" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="source_input 2" spacing="0"/>
+      <portSpacing port="source_input 3" spacing="0"/>
+      <portSpacing port="source_input 4" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>
